@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mārefa Source Logo Reference</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .logo-container {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .logo {
+      width: 200px;
+      height: auto;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    h2 {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mārefa Source Logo Reference</h1>
+  
+  <div class="logo-container">
+    <img src="/images/logo-white.png" alt="Mārefa Source Logo" class="logo">
+  </div>
+  
+  <h2>MarefaLogo.tsx Component</h2>
+  <p>Here's the current SVG implementation of the logo in the MarefaLogo.tsx component:</p>
+  
+  <pre>
+import React from 'react';
+
+interface MarefaLogoProps {
+  className?: string;
+  showText?: boolean;
+  theme?: 'light' | 'dark';
+}
+
+const MarefaLogo: React.FC<MarefaLogoProps> = ({ 
+  className = "h-12", 
+  showText = false, 
+  theme = 'dark' 
+}) => {
+  // Use currentColor for the logo to adapt to dark/light mode
+  // But keep the green diamond always green
+  return (
+    <div className={`${className} flex flex-col items-center`}>
+      <svg
+        viewBox="0 0 1000 800"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-auto"
+      >
+        <g transform="translate(340, 100) scale(1.6)">
+          {/* Green diamond at top */}
+          <path d="M100 0 L110 10 L100 20 L90 10 Z" fill="#1C8A43" />
+          
+          {/* Main diamond outline */}
+          <path d="M56 56 L100 100 L144 56 L100 12 Z" 
+            stroke="currentColor" strokeWidth="10" fill="none" />
+          
+          {/* Inner square shapes */}
+          <path d="M78 78 L100 100 L122 78 L100 56 Z" 
+            stroke="currentColor" strokeWidth="10" fill="none" />
+          
+          {/* Center diamond */}
+          <path d="M100 78 L110 88 L100 98 L90 88 Z" 
+            stroke="currentColor" strokeWidth="5" fill="none" />
+          
+          {/* Bottom right diamond */}
+          <path d="M122 100 L132 110 L122 120 L112 110 Z" 
+            stroke="currentColor" strokeWidth="5" fill="none" />
+          
+          {/* Top left inner diamond */}
+          <path d="M78 56 L88 66 L78 76 L68 66 Z" 
+            stroke="currentColor" strokeWidth="5" fill="none" />
+          
+          {/* Left small dots */}
+          <path d="M45 88 L50 93 L45 98 L40 93 Z" fill="currentColor" />
+          <path d="M35 88 L40 93 L35 98 L30 93 Z" fill="currentColor" />
+          <path d="M25 88 L30 93 L25 98 L20 93 Z" fill="currentColor" />
+        </g>
+        
+        {/* Text "MAREFA SOURCE" */}
+        {showText && (
+          <text 
+            x="500" 
+            y="480" 
+            textAnchor="middle" 
+            dominantBaseline="middle" 
+            fill="currentColor"
+            fontFamily="sans-serif"
+            fontWeight="bold"
+            fontSize="60"
+            letterSpacing="2"
+          >
+            MĀREFA SOURCE
+          </text>
+        )}
+      </svg>
+    </div>
+  );
+};
+
+export default MarefaLogo;
+  </pre>
+
+  <h2>Alternative Approach</h2>
+  <p>If you prefer to use the exact PNG image, you can modify the component to use the PNG directly:</p>
+
+  <pre>
+import React from 'react';
+
+interface MarefaLogoProps {
+  className?: string;
+  showText?: boolean;
+}
+
+const MarefaLogo: React.FC<MarefaLogoProps> = ({ className = "h-12", showText = false }) => {
+  return (
+    <div className={className}>
+      <img 
+        src="/images/logo-white.png" 
+        alt="Mārefa Source Logo" 
+        className="h-full w-auto"
+      />
+      {showText && (
+        <div className="mt-2 text-center text-lg font-bold">
+          MĀREFA SOURCE
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MarefaLogo;
+  </pre>
+
+  <h2>Project Files</h2>
+  <p>The key files in the project are:</p>
+  <ul>
+    <li><strong>MarefaLogo.tsx:</strong> The logo component</li>
+    <li><strong>ChatInterface.tsx:</strong> The main chat interface with the welcome message</li>
+    <li><strong>Sidebar.tsx:</strong> The sidebar component that includes the logo</li>
+    <li><strong>App.tsx:</strong> The main application component</li>
+    <li><strong>index.css:</strong> Styling for the application</li>
+  </ul>
+
+  <p>You can download the PNG logo directly from this location: <a href="/images/logo-white.png" download>Download Logo</a></p>
+</body>
+</html>
